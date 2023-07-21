@@ -3,7 +3,7 @@ import sys
 
 def main(country):
 
-    os.chdir('/linflow')
+    os.chdir('linflow')
 
     cmd = "mkdir " + country + "/inter/fastas"
     os.system(cmd)

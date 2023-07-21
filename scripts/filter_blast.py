@@ -3,7 +3,7 @@ import os
 import sys
 
 def main(country):
-    os.chdir('/linflow')
+    os.chdir('linflow')
 
     df = pd.read_csv(country + "/inter/BLAST.txt", sep="\t", header=None)
 

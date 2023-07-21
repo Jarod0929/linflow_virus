@@ -2,7 +2,7 @@ import os
 import sys
 
 def main(country):
-    os.chdir('/linflow')
+    os.chdir('linflow')
 
     folder = country + "/inter/"
 
@@ -23,6 +23,7 @@ def main(country):
     os.system(cmd)
 
     cmd = "mv workspaces/" + country + "_virus/lin_summary_scheme1.csv " + country + "/inter"
+    os.system(cmd)
 
     cmd = "python -m linflow remove " + country + "_virus"
     os.system(cmd)

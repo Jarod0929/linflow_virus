@@ -2,7 +2,7 @@ import os
 import sys
 
 def main(country):
-    os.chdir('/linflow')
+    os.chdir('linflow')
 
     cmd = "makeblastdb -in " + country + "/input/"+country+"_full.fasta -dbtype nucl -out blast_"+country
     os.system(cmd)

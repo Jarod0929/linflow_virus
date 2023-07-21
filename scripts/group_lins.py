@@ -3,7 +3,7 @@ import os
 import sys
 
 def main(country):
-    os.chdir('/linflow')
+    os.chdir('linflow')
 
     df_blast = pd.read_csv(country + "/inter/blast_list.csv")
     df_meta = pd.read_csv(country + "/output/metadata.csv")
