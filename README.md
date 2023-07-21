@@ -7,6 +7,7 @@ python createFolders.py <country_name>
 ```
 
 Place the <country_name>_full.fasta file in <country_name>/input/
+
 Place the metadata.tsv file in <country_name>/input/
 
 ```
