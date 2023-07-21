@@ -1,7 +1,10 @@
 import pandas as pd
+import os
 import sys
 
 def main(country):
+    os.chdir('/linflow')
+
     df = pd.read_csv(country + "/inter/BLAST.txt", sep="\t", header=None)
 
     df = df[df[3]>29800]
@@ -21,6 +24,8 @@ def main(country):
     df_new['strain'] = strain_arr
 
     df_new.to_csv(country + "/inter/blast_list.csv", index=False)
+
+    os.chdir('../')
 
 if __name__ == "__main__":
     main(sys.argv[1])

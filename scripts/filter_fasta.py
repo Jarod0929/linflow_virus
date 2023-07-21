@@ -5,6 +5,8 @@ import sys
 import os
 
 def main(country):
+    os.chdir('/linflow')
+
     df = pd.read_csv(country + "/inter/blast_list.csv")
 
     folder = country + "/inter/"
@@ -33,6 +35,8 @@ def main(country):
 
     cmd = "rm -r " + folder + "fastas"
     os.system(cmd)
+
+    os.chdir('../')
 
 if __name__ == "__main__":
     main(sys.argv[1])

@@ -3,6 +3,8 @@ import os
 import sys
 
 def main(country):
+    os.chdir('/linflow')
+
     df_blast = pd.read_csv(country + "/inter/blast_list.csv")
 
     df_meta = pd.read_csv(country + "/input/metadata.tsv", sep="\t")
@@ -16,6 +18,8 @@ def main(country):
     df.rename({"sseqid": "genome file"}, axis=1, inplace=True)
 
     df.to_csv(country + "/output/metadata.csv", index=False)
+
+    os.chdir('../')
 
 if __name__ == "__main__":
     main(sys.argv[1])

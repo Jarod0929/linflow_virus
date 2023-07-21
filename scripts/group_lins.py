@@ -3,6 +3,8 @@ import os
 import sys
 
 def main(country):
+    os.chdir('/linflow')
+
     df_blast = pd.read_csv(country + "/inter/blast_list.csv")
     df_meta = pd.read_csv(country + "/output/metadata.csv")
 
@@ -17,6 +19,8 @@ def main(country):
     df.sort_values(["lineage", "LIN"], inplace= True)
 
     df.to_csv(country + "/output/result.csv", index=False)
+
+    os.chdir('../')
 
 if __name__ == "__main__":
     main(sys.argv[1])

@@ -2,16 +2,16 @@ import os
 import sys
 
 def main(country):
-    cmd = "mkdir " + country
+    cmd = "mkdir linflow/" + country
     os.system(cmd)
 
-    cmd = "mkdir " + country + "/input"
+    cmd = "mkdir linflow/" + country + "/input"
     os.system(cmd)
 
-    cmd = "mkdir " + country + "/output"
+    cmd = "mkdir linflow/" + country + "/output"
     os.system(cmd)
 
-    cmd = "mkdir " + country + "/inter"
+    cmd = "mkdir linflow/" + country + "/inter"
     os.system(cmd)
 
 if __name__ == "__main__":

@@ -2,6 +2,9 @@ import os
 import sys
 
 def main(country):
+
+    os.chdir('/linflow')
+
     cmd = "mkdir " + country + "/inter/fastas"
     os.system(cmd)
     
@@ -18,12 +21,13 @@ def main(country):
     temp.close()
     f.close()
 
-    cmd = "zip -r " + country + "/inter/Bhutan_fastas.zip" + country + "/inter/fastas"
+    cmd = "zip -r " + country + "/inter/" + country + "_fastas.zip " + country + "/inter/fastas"
     os.system(cmd)
 
     cmd = "rm -r " + country + "/inter/fastas"
     os.system(cmd)
-        
+    
+    os.chdir('../')
 
 if __name__ == "__main__":
     main(sys.argv[1])
