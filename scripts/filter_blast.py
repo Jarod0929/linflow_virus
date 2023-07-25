@@ -9,8 +9,8 @@ def main(country):
 
     df = df[df[3]>29800]
 
-    df_new = df.iloc[:, [1, 8, 9]]
-    df_new.rename({1:"sseqid", 8:"sstart",9:"send"},axis =1, inplace=True)
+    df_new = df.iloc[:, [1,2,4 8, 9]]
+    df_new.rename({1:"sseqid",2:"identity%", 4:"mismatches" 8:"sstart",9:"send"},axis =1, inplace=True)
 
     arr = df_new['sseqid'].array
     new_arr = []
