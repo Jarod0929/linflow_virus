@@ -47,7 +47,7 @@ def main(country):
                 seq = seq + line
         sequences.append(seq)
 
-    for col in range(1,len(df_ed.columns)):
+    for col in range(1,len(df_ed.columns)+1):
         name_col = df_ed.columns[col]
 
         for row in range(1,col):
