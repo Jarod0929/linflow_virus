@@ -27,7 +27,7 @@ def main(country):
     cmd = "rm -r " + country + "/inter/ANIm_dir"
     os.system(cmd)
 
-    #edit distance
+    # #edit distance
 
     df_ANIm = pd.read_csv(country + "/inter/ANIm_similarity_errors.tab", sep='\t')
 
@@ -52,13 +52,14 @@ def main(country):
 
         for row in range(1,col):
             name_row = df_ed.columns[row]
+            print(col, row)
 
             if col == row:
                 val = 0
             else:
-                val = editdistance.eval(sequences[col], sequences[row])
-            df_ed[name_col][row] = val
-            df_ed[name_row][col] = val
+                val = editdistance.eval(sequences[col-1], sequences[row-1])
+            df_ed[name_col][row-1] = val
+            df_ed[name_row][col-1] = val
 
     df_ed.to_csv(country + "/inter/editdistance.csv", index=False)
 
@@ -66,11 +67,19 @@ def main(country):
     os.system(cmd)
 
     #combining two matrices
+    df_ANIm = pd.read_csv(country + "/inter/ANIm_similarity_errors.tab", sep='\t')
+    df_ed = pd.read_csv(country + "/inter/editdistance.csv")
+
+    df = pd.DataFrame(columns = df_ANIm.columns)
+    df_ANIm.rename(columns={df_ANIm.columns[0]:"genome_file"}, inplace=True)
+    df["genome_file"]= df_ANIm["genome_file"]
+
+    df = df.astype("string")
 
     for col in range(1, len(df_ANIm.columns)):
         name_col = df_ANIm.columns[col]
         for row in range(0, len(df_ANIm.columns)-1):
-            df_ANIm[name_col][row] = df_ANIm[name_col][row] + "/" + df_ed[name_col][row]
+            df_ANIm[name_col][row] = str(df_ANIm[name_col][row]) + "/" + str(df_ed[name_col][row])
 
     df_ANIm.to_csv(country + "/output/combined_ANIm.csv", index=False)
 
