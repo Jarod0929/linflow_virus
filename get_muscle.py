@@ -7,14 +7,14 @@ def main(country):
         cmd = "python scripts/blast.py "+country
         os.system(cmd)
 
-    #FILTERS BLAST
-    if not os.path.isfile("linflow/" + country + "/inter/blast_list.csv"):
-        cmd = "python scripts/filter_blast.py "+country
-        os.system(cmd)
-
     #SPLITS FASTA FILES
     if not os.path.isfile("linflow/" + country + "/inter/" + country + "fastas.zip"):
         cmd = "python scripts/split_fasta.py "+country
+        os.system(cmd)
+
+    #FILTERS BLAST
+    if not os.path.isfile("linflow/" + country + "/inter/blast_list.csv"):
+        cmd = "python scripts/filter_blast.py "+country
         os.system(cmd)
 
     #FILTERS FASTA FILES
