@@ -7,16 +7,16 @@ def main(country):
     cmd = "python scripts/blast.py "+country
     os.system(cmd)
 
+    #SPLITS FASTA FILES
+    cmd = "python scripts/split_fasta.py "+country
+    os.system(cmd)
+
     #FILTERS BLAST
     cmd = "python scripts/filter_blast.py "+country
     os.system(cmd)
 
     #ALTERS METADATA
     cmd = "python scripts/alter_metadata.py "+country
-    os.system(cmd)
-
-    #SPLITS FASTA FILES
-    cmd = "python scripts/split_fasta.py "+country
     os.system(cmd)
 
     #FILTERS FASTA FILES
