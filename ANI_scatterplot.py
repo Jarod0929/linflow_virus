@@ -24,8 +24,18 @@ def main(country):
 
     plt.scatter(ANIm, mism)
     
+    # Line of best fit
+
     pred_mismatches = [x * a + b for x in ANIm]
-    plt.plot(ANIm,pred_mismatches)
+
+    plt.plot(ANIm,pred_mismatches, "b")
+
+    # Line of predicted mismatches
+
+    L = 29903
+    pred_mismatches = [L * x for x in ANIm]
+
+    plt.plot(ANIm, pred_mismatches, "r")
 
     plt.xlabel("1 - ANIm")
     plt.ylabel("mismatches")
