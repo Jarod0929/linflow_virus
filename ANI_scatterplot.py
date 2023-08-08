@@ -10,6 +10,8 @@ def main(country):
 
     df_ANIm = pd.read_csv(country + "/output/combined_ANIm.csv")
 
+    df_pyani = pd.read_csv(country + "/output/pyani_combined_ANIm.csv")
+
     ANIm = []
     mism = []
 
@@ -20,15 +22,23 @@ def main(country):
                 ANIm.append(1 - float(arr[0]))
                 mism.append(float(arr[1]))
 
-    a, b = np.polyfit(ANIm, mism, 1)
+    pyani = []
 
-    plt.scatter(ANIm, mism)
+    for col in range(len(df_pyani.columns) - 1):
+        for row in range(col):
+            if not (col-1 == row):
+                arr = df_pyani[df_pyani.columns[col]][row].split(sep="/")
+                pyani.append(1 - float(arr[0]))
+
+    a, b = np.polyfit(pyani, mism, 1)
+
+    plt.scatter(pyani, mism)
     
     # Line of best fit
 
-    pred_mismatches = [x * a + b for x in ANIm]
+    pred_mismatches = [x * a + b for x in pyani]
 
-    plt.plot(ANIm,pred_mismatches, "b")
+    plt.plot(pyani,pred_mismatches, "b")
 
     # Line of predicted mismatches
 
